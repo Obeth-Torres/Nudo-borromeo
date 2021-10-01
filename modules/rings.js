@@ -46,5 +46,3 @@ export function drawRing (){
     ctx.lineWidth = 15
     ctx.stroke()
 }
-
-

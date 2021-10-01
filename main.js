@@ -1,5 +1,5 @@
-import { ctx, drawRing } from './modules/rings.js'
-import { conect, init, particlesArray } from './particles.js';
+import { canvas, ctx, drawRing, } from './modules/rings.js'
+import { conect, init, particlesArray } from './modules/particles.js';
 const buttonAng = document.getElementById('angustia')
 
 //animation loop 
@@ -10,15 +10,16 @@ function animate(){
     for(let i = 0; i < particlesArray.length; i++){
         particlesArray[i].update();
     }
-    conect(); 
+    //conect(); 
     drawRing()  
 }
+
 //buttons
 buttonAng.addEventListener('click', angustia);
 drawRing()
 
 function angustia(){
-    
     init();
     animate();   
 }
+
