@@ -3,46 +3,50 @@ export const ctx = canvas.getContext('2d')
 canvas.width = 700 
 canvas.height = 700
 
-let rings = []
-
-class Ring {
-    constructor(x, y, size, color){
+class Rings {
+    constructor(x, y, size, color,angle){
         this.x = x
         this.y = y
-        this.size = size
+        this.size = size  
         this.color = color
-    }
+        this.angle = angle
+    }    
     draw(){
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2,)
+        ctx.save()
+        ctx.beginPath()
+        ctx.translate(this.x, this.y)
+        ctx.rotate(-this.angle * Math.PI/360)
+        ctx.setLineDash([7, 1])
         ctx.strokeStyle = this.color
-        ctx.lineWidth = 15
-        ctx.stroke();
+        ctx.arc(0, 0, this.size, 0, Math.PI * 2)
+        ctx.lineWidth = 20
+        ctx.stroke()
+        ctx.restore()
+        
     }
-
+    update(){
+        this.angle += 0.1
+        this.draw()
+    }
+    
 }
+export let r1 = new Rings(250, 250, 160, '#fcd208', 0)
+export let r2 = new Rings(450, 250, 160, '#1c344f', 0)
+export let r3 = new Rings (350, 425, 160, '#21b5c3', 0 )
 
-
-
-const ring1 = new Ring(250, 250, 150, '#fcd208')
-const ring2 = new Ring(450, 250, 150, '#1c344f')
-const ring3 = new Ring(350, 425, 150, '#21b5c3')
-rings.push(ring1)
-rings.push(ring2)
-rings.push(ring3)
-
-export function drawRing (){
-    rings[0].draw()
-    rings[1].draw()
-    rings[2].draw()
-    ctx.beginPath()
-    ctx.arc(250, 250, 150, (Math.PI/180)*100, (Math.PI/180)*115, false);
+export function drawParches(){    
+    //parches
+    ctx.beginPath()        
+    ctx.setLineDash([5, 1])
+    ctx.arc(250, 250, 160, (Math.PI/180)*100, (Math.PI/180)*120, false);
     ctx.strokeStyle = '#fcd208'
-    ctx.lineWidth = 15
+    ctx.lineWidth = 20
     ctx.stroke()
     ctx.beginPath()
-    ctx.arc(250, 250, 150, (Math.PI/180)*5, (Math.PI/180)*16, false)
+    ctx.arc(250, 250, 160, (Math.PI/180)*1, (Math.PI/180)*20, false)
     ctx.strokeStyle = '#fcd208'
-    ctx.lineWidth = 15
+    ctx.lineWidth = 20    
     ctx.stroke()
+    ctx.restore()
 }
+

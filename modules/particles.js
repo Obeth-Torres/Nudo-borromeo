@@ -1,8 +1,8 @@
-import { canvas, ctx } from './rings.js'
+import { ctx,  } from './rings.js'
 
-export let particlesArray;
+let particlesArray = []
 
-export class Particle {
+class Particle {
     constructor(x, y, directionX, directionY, size, color){
         this.x = x
         this.y = y
@@ -19,16 +19,25 @@ export class Particle {
         ctx.fill();
     }
     //check particle position, move the particle, draw the particle
-    update(){
-        if(this.x > 550 ){
-            this.color = '#1c344f'
-        } 
-        if (this.x > 600 || this.y <105 ){
-            this.color = '#ffbd1f'
-            this.x = 350
+    updateParticle(){
+        //let distance from the center
+        let distance = Math.sqrt(
+            ((this.x - 250) * (this.x - 250)) 
+            + ((this.y - 250) * (this.y - 250))
+        )
+        if (distance > 150){
+            this.color = 'rgba(255, 191, 0, 1)'
+        }
+
+        let distance2 = Math.sqrt(
+            ((this.x - 450) * (this.x - 450))
+            + ((this.y - 250) * (this.y - 250))
+        )
+        if(distance2 > 135 && distance >=150){
+            this.color = 'rgba(255, 191, 0, 0)'
+            this.x = 250
             this.y = 350
         }
-        
         //move particle
         this.x += this.directionX 
         this.y -= this.directionY *2
@@ -36,38 +45,28 @@ export class Particle {
         this.draw();
     }
 }
+
+
 //create particle array
-export function init(){
+function init(){
     particlesArray = []
-    let numberOfParticles = 50
+    let numberOfParticles = 130
     for(let i = 0 ; i < numberOfParticles ; i++){
         let size = (Math.random()*5) + 1;
-        let x = 350
-        let y = 350
+        let x = 300
+        let y = (Math.random() * (370 - 200) + 200)
         let directionX = Math.random()* 1+1;
         let directionY = Math.random() * 1;
-        let color = '#ffbd1f';
+        let color = 'rgba(255, 191, 0, 0.0)';
 
         particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
     }    
 }
+init()
 
-//check if particles are close enough to draw line between them
-export function conect(){
-    for(let a = 0; a < particlesArray.length; a++){
-        for(let b = 0; b < particlesArray.length; b++){
-            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) 
-                        + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-            if(distance < (canvas.width/7) * (canvas.height/7)){
-                ctx.strokeStyle = '#9249ec' ;
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                ctx.stroke();
-            }           
-        }
+export function drawParticles(){
+    for(let i = 0; i < 150; i++){
+        particlesArray[i].updateParticle()
     }
 }
 
-ctx.beginPath()
