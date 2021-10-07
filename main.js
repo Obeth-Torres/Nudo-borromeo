@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { drawParticles } from './modules/particles.js';
 import { canvas, ctx, r1, r2, r3, drawParches } from './modules/rings.js'
 
@@ -22,3 +23,29 @@ drawParches()
 
 
 
+=======
+import { ctx, drawRing } from './modules/rings.js'
+import { conect, init, particlesArray } from './particles.js';
+const buttonAng = document.getElementById('angustia')
+
+//animation loop 
+function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+    for(let i = 0; i < particlesArray.length; i++){
+        particlesArray[i].update();
+    }
+    conect(); 
+    drawRing()  
+}
+//buttons
+buttonAng.addEventListener('click', angustia);
+drawRing()
+
+function angustia(){
+    
+    init();
+    animate();   
+}
+>>>>>>> ef3bb446867f1e68f6bd5652dfbcd0c49f08ef22

@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 
 
 #canvasid {   
     max-width: 700px;
     height: 700px;
     background: radial-gradient(#cacaca,  #3d3d3c);
+=======
+
+
+#canvasid {   
+    max-width: 700px;
+    height: 700px;
+    background: radial-gradient(#cacaca,  #3d3d3c);
+>>>>>>> ef3bb446867f1e68f6bd5652dfbcd0c49f08ef22
 }
