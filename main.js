@@ -1,9 +1,9 @@
 import { drawParticles } from './modules/particles.js';
 import { canvas, ctx, r1, r2, r3, drawParches } from './modules/rings.js'
-const buttonAng = document.getElementById('angustia')
 
 
-function animate(){
+
+export function animate(){
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     //drawRing1()
@@ -21,9 +21,4 @@ r3.update()
 drawParches()
 
 
-//buttons
-buttonAng.addEventListener('click', angustia);
-//drawRing1()
-function angustia(){
-    animate();   
-}
+
