@@ -1,11 +1,46 @@
-#canvasid {   
-    max-width: 700px;
-    height: 700px;
-    background: radial-gradient(#cacaca,  #3d3d3c);
+
+
+body {
+    background:  #cacaca;
+}
+h1 {
+    color: #1c344f;
+    text-align: center;
 }
 
 #canvasid {   
-    max-width: 700px;
-    height: 700px;
+    max-width: 500px;
+    height: 500px;
     background: radial-gradient(#cacaca,  #3d3d3c);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+.buttons {
+    
+    text-align: center;
+}
+
+button{
+    font-size: 1rem;
+    margin: 40px 5px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    color:  #ffff;
+}
+#inhibicion {
+    border: 5px solid #21b5c3;
+    background-color: #21b5c3;
+}
+#sintoma {
+    border: 5px solid #1c344f;
+    background-color: #1c344f;
+}
+#angustia {
+    border: 5px solid #fcd208;
+    background-color: #fcd208;
+    color: #727270;
 }

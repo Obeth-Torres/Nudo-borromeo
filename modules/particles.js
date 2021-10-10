@@ -86,8 +86,8 @@ function sintoma(){
     r2Y = 425
     particleColor = 'rgba(28, 52, 79, 1)'
     for(let i = 0; i < particlesArray.length; i++){
-        particlesArray[i].x = 350
-        particlesArray[i].y = 350
+        particlesArray[i].x = 330
+        particlesArray[i].y = 250
         particlesArray[i].directionX = Math.random()* 1
         particlesArray[i].directionY = Math.random() * 1
         particlesArray[i].color = 'rgba(14, 34, 86, 0.0)';
@@ -111,7 +111,6 @@ function angustia(){
         particlesArray[i].directionY = - Math.random() * 1
         particlesArray[i].color = 'rgba(255, 191, 0, 0.0)';
     }    
-    
     animate();   
 }
 
